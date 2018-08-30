@@ -1,0 +1,99 @@
+version corta: 
+1 - abrir git bash
+
+2 - escribir: cd
+
+3 - hacer un espacio
+
+4 - arastrar la carpeta de nuestro proyecto al bash
+
+5 - deberia quedar algo asi (cambia la ruta depende de donde esta el proyecto):
+    cd /c/Users/ezequ/OneDrive/Escritorio/ReposGit/GuitarrasInvie
+
+6 - damos enter
+
+7 - traemos los cambios del repo remoto y los combinamos solo tipeamos git pull "repo remoto" "branch remoto"
+    ej: git pull origin master (en nuestro caso siempre es ese)
+
+8 - una vez hayamos trabajado escribimos en el bash: git status, ahi vamos a poder ver que
+    archivos no estan preparados para subir (aparecen en rojo)
+
+9 - despues escribimos en el bash: git add -A (en caso de querer agregar todos los archivos)
+    o git add "nombre del archivo" (en caso de querer agregar uno solo) ej:git add index.html
+    
+10- una vez que agregamos todo lo que queremos volvemos a poner: git status para confirmar
+    que esta en verde todo lo que queremos subir y en rojo lo que no (o ninguno en rojo)
+
+11- una vez que tenemos preparaos los archivos tipeamos: git commit -m "comentario del commit"
+    ej: git commit -m "actualizacion de titulos"
+
+12- luego creamos un tag para nuestro commit para poder identificarlo tipeamos:
+    git tag -a "version que le querramos poner" -m "comentario" 
+    ej: git tag -a 0.1 -m "versión estable del proyecto"
+
+13- una vez que tenemos hecho nuestro commit con su respectivo tag tipeamos 
+    push tipeando git push "repo" "branch" --tags
+    ej: git push origin master (en nuestro caso es siempre asi)
+
+version larga:
+
+1 - abrir git bash
+2 - escribir: cd
+3 - hacer un espacio
+4 - arastrar la carpeta de nuestro proyecto al bash
+5 - deberia quedar algo asi (cambia la ruta depende de donde esta el proyecto):
+    cd /c/Users/ezequ/OneDrive/Escritorio/ReposGit/GuitarrasInvie
+6 - damos enter
+    7- traemos los cambios hechos en el repo remoto tipeamos (que hizo otro): 
+       git fetch "nombre del repo remoto" "nombre del branch remoto" ej: git fetch origin master 
+       (en nuestro caso es poner siempre: git fetch origin master)
+    8- mezclamos los cambios que trajimos usamos: 
+       git merge origin/master --allaw-unrelated-histories 
+       (origin/master es el branch que se creo cuando hicimos fetch)
+9- para hacer los pasos 7 y 8 al mismo tiempo solo tipeamos git pull "repo remoto" "branch remoto"
+    ej: git pull origin master (en nuestro caso siempre es ese)
+10- una vez hayamos trabajado escribimos en el bash: git status, ahi vamos a poder ver que
+    archivos no estan preparados para subir (aparecen en rojo)
+11- despues escribimos en el bash: git add -A (en caso de querer agregar todos los archivos)
+    o git add "nombre del archivo" (en caso de querer agregar uno solo) ej:git add index.html
+    12- si te equivocas y agregaste uno que no iba pones: git rm "nombre del archivo" ej:git rm index.html
+        si queres sacar todo usas: git rm --cached 
+13- una vez que agregamos todo lo que queremos volvemos a poner: git status para confirmar
+    que esta en verde todo lo que queremos subir y en rojo lo que no (o ninguno en rojo)
+14- una vez que tenemos preparaos los archivos tipeamos: git commit -m "comentario del commit"
+    ej: git commit -m "actualizacion de titulos"
+    15- para agregar contenido al mismo commit se tipea: git commit --amend
+    16- luego apretamos la tecla esc y tipeamos: :wq y apretamos enter
+17- luego creamos un tag para nuestro commit para poder identificarlo tipeamos:
+    git tag -a "version que le querramos poner" -m "comentario" 
+    ej: git tag -a 0.1 -m "versión estable del proyecto"
+    18- en caso de querer poner un tag ligero en algun commit viejo ponemos git tag "version" y el hash 
+        que lo sacamos tipeando git log (para hacerlo simple hacemos git log --oneline)
+    19- git tag -d "versin" borra el tag agregado (solo el tag)
+20- una vez que tenemos hecho nuestro commit con su respectivo tag tipeamos 
+    push tipeando git push "repo" "branch" --tags
+    ej: git push origin master (en nuestro caso es siempre asi)
+    21- git diff hash  nos muestra lo que cambia entre nuestro ultimo commit y el que estamos especificando
+        y si usamos git diff hash hash comparamos que cambio entre el primer hash (viejo) y el segundo (nuevo)
+    22- git reset --soft hash recetea todo a partir de ese commit en adelante (no lo incluye) sin sacar los
+        archivos del stage
+    23- git reset --mixed hace los mismo que soft pero saca los archivos de stage
+    24- git reset --hard hace lo mismo pero descarta los archivos por completo del repo local
+    25- git branch -l lista todos nuestros branchs (rama)
+    26- git branch "nombre" crea el branch
+    27- git branch -d "nombre" elimina el branch del nombre que le pasamos (si no tiene commits dentro)
+    28- git branch -D "nombre" hace lo mismo pero forzado
+    29- git branch -m "nombre" "nuevo nombre"
+    30- para moverse entre branchs usamos: git checkout "nombre" o "hash del commit"
+
+
+
+
+git config user.name "nombre" git config user.email "mail" para setear esos datos en nuestro git
+crear llave ssh usamos ssh-keygen -t rsa -b 4096 -C "tu email" enter enter enter
+la agregamos en github
+despues vinculamos muestro repo local con el repo remoto de gthub vamos a la ruta de nuestro proyecto
+y tipeamos git remote add "nombre del repo remoto" y la ssh del repo github ej:
+git remote add origin git@github.com:User/Proyect.git
+para ver el estado usamos git remote -v y para borrar usamos git remote remove "nombre" ej: 
+git remote remove origin
